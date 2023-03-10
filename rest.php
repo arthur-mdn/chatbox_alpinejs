@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         switch ($_GET['what']){
             case "users":
                 $query = $conn2->prepare("
-                SELECT u.*, COALESCE(m.NotReadCount, 0) AS NotReadCount, 
+                SELECT u.*, COALESCE(m.NotReadCount, 0) AS NotReadCount,
                        IFNULL(m2.LastMessageContent, '') AS LastMessage, 
                        IFNULL(m2.LastMessageDate, '') AS LastMessageDate
                 FROM users u
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 //                WHERE users.UserId != ?
 //                AND users.UserStatut = 0;
 //							");
-                $query->bindValue(1, $_SESSION['UserId']);
+//                $query->bindValue(1, $_SESSION['UserId']);
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 echo json_encode($result);
@@ -78,10 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $query->execute();
 
                     $query = $conn2->prepare("
-                        SELECT * FROM messages WHERE MessageExpediteur = ? or MessageDestinataire = ? ORDER BY messages.MessageDate ASC ;
+                        SELECT * FROM messages WHERE (MessageExpediteur = ? or MessageDestinataire = ?) AND (MessageExpediteur = ? or MessageDestinataire = ?) ORDER BY messages.MessageDate ASC ;
 							");
                     $query->bindValue(1, $_GET['who']);
                     $query->bindValue(2, $_GET['who']);
+                    $query->bindValue(3, $_SESSION['UserId']);
+                    $query->bindValue(4, $_SESSION['UserId']);
                     $query->execute();
                     $result = $query->fetchAll(PDO::FETCH_ASSOC);
                     echo json_encode($result);
