@@ -25,6 +25,8 @@ if (!isset($_SESSION['UserId'])) {
     <div id="main">
 
     </div>
+
+<a href="logout.php">Se déconnecter</a>
 </body>
 </html>
 <?php

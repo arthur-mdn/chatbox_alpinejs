@@ -43,7 +43,8 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     <input type="text" maxlength="32" name="username"><br>
     <label>Mot de passe</label><br>
     <input type="password" name="password"><br><br>
-    <input type="submit">
+    <input type="submit"><br>
+    <a href="register.php">Créer un compte</a>
 </form>
 
 </body>
