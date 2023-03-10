@@ -10,3 +10,8 @@ Ce projet a été créé uniquement pour apprendre à utiliser AlpineJS, donc la
 - Importer le dump MySQL.
 - Modifier le fichier config.php pour fournir les bons identifiants.
 - Enjoy !
+
+Les utilisateurs par défauts sont : 
+- ID : arthurmdn / MDP : abc
+- ID : arthurmdn2 / MDP : abc
+- ID : arthurmdn3 / MDP : abc
