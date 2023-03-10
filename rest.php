@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 //                WHERE users.UserId != ?
 //                AND users.UserStatut = 0;
 //							");
-//                $query->bindValue(1, $_SESSION['UserId']);
+                $query->bindValue(1, $_SESSION['UserId']);
                 $query->execute();
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
                 echo json_encode($result);
